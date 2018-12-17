@@ -9,6 +9,7 @@ function clean(text) {
 }
 
 const prefix = "-";
+const categoryId = "524319917005078539";
 
 client.on("ready", () => {
   console.log("Vulnix | Logged in! Server count: ${client.guilds.size}");
