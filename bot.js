@@ -12,7 +12,7 @@ const prefix = "-";
 
 client.on("ready", () => {
   console.log("Vulnix | Logged in! Server count: ${client.guilds.size}");
-  client.user.setGame(`!help`);
+  client.user.setGame(`Support Magic |${prefix}new`);
 });
 
 
@@ -38,11 +38,7 @@ client.on("message", (message) => {
 if (message.content.toLowerCase().startsWith(prefix + `new`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
     if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
-
-    if (message.guild.category.exists("name", "Tickets" + message.author.id)) return message.channel.send(`!`);
-
     if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
-    message.createCategory("Tickets", "category")
     message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
         let role = message.guild.roles.find("name", "Support Team");
         let role2 = message.guild.roles.find("name", "@everyone");
@@ -88,10 +84,6 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 }
 
 });
-
-
-
-
 
 
 client.login(process.env.BOT_TOKEN);
